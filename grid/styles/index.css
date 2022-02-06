@@ -1,0 +1,576 @@
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: #302e2b;
+  color: white;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /*
+   * MAIN CONTAINER CONTAINER STYLES
+   */
+  /*
+   * SCREEN SIZES
+   */
+}
+
+body a {
+  text-decoration: none;
+}
+
+body > .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /*
+     * HISTORY CONTAINER STYLES
+     */
+  /*
+     * GAME CONTAINER STYLES
+     */
+  /*
+     * BUTTON CONTAINER STYLES
+     */
+}
+
+body > .container > .history-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  background-color: #21201d;
+}
+
+body > .container > .history-container > .history-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 60%;
+  min-width: 100px;
+  min-height: 150px;
+  max-width: 250px;
+  max-height: 500px;
+}
+
+body > .container > .history-container > .history-box > .history-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20%;
+  min-height: 30px;
+  max-height: 50px;
+  font-size: 1.2rem;
+  color: #b3b3b2;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  padding-right: 5px;
+}
+
+body > .container > .history-container > .history-box > .history-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-y: scroll;
+}
+
+body > .container > .history-container > .history-box > .history-list > .history-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  color: #b3b3b2;
+  font-size: 1.2rem;
+}
+
+body > .container > .game-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+body > .container > .game-container > .board {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
+  -ms-grid-rows: (1fr)[8];
+      grid-template-rows: repeat(8, 1fr);
+  background-color: #5784bb;
+  height: 550px;
+  width: 550px;
+  border-radius: 5px;
+}
+
+body > .container > .game-container > .board > .tile {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body > .container > .game-container > .board > .tile:nth-child(n):nth-child(-n + 8):nth-child(odd), body > .container > .game-container > .board > .tile:nth-child(n + 9):nth-child(-n + 16):nth-child(even), body > .container > .game-container > .board > .tile:nth-child(n + 17):nth-child(-n + 24):nth-child(odd), body > .container > .game-container > .board > .tile:nth-child(n + 25):nth-child(-n + 32):nth-child(even), body > .container > .game-container > .board > .tile:nth-child(n + 33):nth-child(-n + 40):nth-child(odd), body > .container > .game-container > .board > .tile:nth-child(n + 41):nth-child(-n + 48):nth-child(even), body > .container > .game-container > .board > .tile:nth-child(n + 49):nth-child(-n + 56):nth-child(odd), body > .container > .game-container > .board > .tile:nth-child(n + 57):nth-child(-n + 64):nth-child(even) {
+  background-color: white;
+}
+
+body > .container > .game-container > .board > .tile:nth-child(n + 9):nth-child(-n + 16) {
+  background-image: url("../../assets/chess-pieces/bP.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(n + 49):nth-child(-n + 56) {
+  background-image: url("../../assets/chess-pieces/wP.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(1), body > .container > .game-container > .board > .tile:nth-child(8) {
+  background-image: url("../../assets/chess-pieces/bR.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(64), body > .container > .game-container > .board > .tile:nth-child(57) {
+  background-image: url("../../assets/chess-pieces/wR.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(2), body > .container > .game-container > .board > .tile:nth-child(7) {
+  background-image: url("../../assets/chess-pieces/bN.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(63), body > .container > .game-container > .board > .tile:nth-child(58) {
+  background-image: url("../../assets/chess-pieces/wN.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(3), body > .container > .game-container > .board > .tile:nth-child(6) {
+  background-image: url("../../assets/chess-pieces/bB.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(62), body > .container > .game-container > .board > .tile:nth-child(59) {
+  background-image: url("../../assets/chess-pieces/wB.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(5) {
+  background-image: url("../../assets/chess-pieces/bQ.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(61) {
+  background-image: url("../../assets/chess-pieces/wQ.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(4) {
+  background-image: url("../../assets/chess-pieces/bK.svg");
+}
+
+body > .container > .game-container > .board > .tile:nth-child(60) {
+  background-image: url("../../assets/chess-pieces/wK.svg");
+}
+
+body > .container > .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0.5;
+      -ms-flex: 0.5;
+          flex: 0.5;
+  margin: 0 5px 70px 5px;
+  padding: 0 10px 10px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body > .container > .button-container > .button {
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.5;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  min-width: 200px;
+}
+
+body > .container > .button-container > .button:hover {
+  opacity: 1;
+}
+
+body > .container > .button-container > .left-button {
+  color: white;
+  background-color: #5784bb;
+  margin-bottom: 5px;
+}
+
+body > .container > .button-container > .right-button {
+  background-color: white;
+}
+
+body > .container > .button-container > .right-button a {
+  color: #5784bb;
+}
+
+@media (max-width: 1024px) {
+  body .container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
+    gap: 20px;
+  }
+  body .container .history-container {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 20%;
+            flex: 1 0 20%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    max-height: 100%;
+  }
+  body .container .history-container .history-box {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: 100%;
+    max-width: 70%;
+    min-height: 20px;
+    max-height: 50px;
+    min-width: 500px;
+  }
+  body .container .history-container .history-box .history-title {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    font-size: 0.8rem;
+    border-bottom-style: none;
+    border-right: 1px solid gray;
+    width: 20%;
+  }
+  body .container .history-container .history-box .history-list {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    overflow-x: scroll;
+    width: 100%;
+    min-width: 60px;
+    max-width: 100%;
+  }
+  body .container .history-container .history-box .history-list .history-item {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    background-color: transparent;
+    width: 50%;
+    min-width: 50%;
+    padding: 0 10px 0 10px;
+    font-size: 1rem;
+  }
+  body .container .game-container {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 80%;
+            flex: 1 0 80%;
+  }
+  body .container .button-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 8px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+  }
+  body .container .button-container .button {
+    min-width: 175px;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  body .container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
+    gap: 20px;
+  }
+  body .container .history-container {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 20%;
+            flex: 1 0 20%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    max-height: 100%;
+  }
+  body .container .history-container .history-box {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: 100%;
+    max-width: 70%;
+    min-height: 20px;
+    max-height: 50px;
+    min-width: 500px;
+  }
+  body .container .history-container .history-box .history-title {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    font-size: 0.75rem;
+  }
+  body .container .history-container .history-box .history-list {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    overflow-x: scroll;
+    width: 100%;
+    min-width: 60px;
+    max-width: 100%;
+  }
+  body .container .history-container .history-box .history-list .history-item {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    background-color: transparent;
+    width: 50%;
+    min-width: 50%;
+    padding: 0 10px 0 10px;
+  }
+  body .container .game-container {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 80%;
+            flex: 1 0 80%;
+  }
+  body .container .game-container .board {
+    width: 500px;
+    height: 500px;
+  }
+  body .container .button-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+  }
+  body .container .button-container .button {
+    min-width: 175px;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  body .container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
+    gap: 20px;
+  }
+  body .container .history-container {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 20%;
+            flex: 1 0 20%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    max-height: 100%;
+  }
+  body .container .history-container .history-box {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: 100%;
+    max-width: 70%;
+    min-height: 20px;
+    max-height: 50px;
+    min-width: 450px;
+  }
+  body .container .history-container .history-box .history-title {
+    font-size: 0.69rem;
+  }
+  body .container .history-container .history-box .history-list {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    overflow-x: scroll;
+    width: 100%;
+    min-width: 60px;
+    max-width: 100%;
+  }
+  body .container .history-container .history-box .history-list .history-item {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    background-color: transparent;
+    width: 50%;
+    min-width: 50%;
+    padding: 0 10px 0 10px;
+  }
+  body .container .game-container {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 80%;
+            flex: 1 0 80%;
+  }
+  body .container .game-container .board {
+    width: 450px;
+    height: 450px;
+  }
+  body .container .button-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+  }
+  body .container .button-container .button {
+    min-width: 175px;
+    max-width: 225px;
+  }
+}
+
+@media (max-width: 550px) {
+  body .container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-line-pack: space-evenly;
+        align-content: space-evenly;
+    gap: 20px;
+  }
+  body .container .history-container {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 20%;
+            flex: 1 0 20%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    max-height: 100%;
+  }
+  body .container .history-container .history-box {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: 100%;
+    max-width: 70%;
+    min-height: 20px;
+    max-height: 50px;
+    min-width: 400px;
+  }
+  body .container .history-container .history-box .history-title {
+    font-size: 0.55rem;
+  }
+  body .container .history-container .history-box .history-list {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    overflow-x: scroll;
+    width: 100%;
+    min-width: 60px;
+    max-width: 100%;
+  }
+  body .container .history-container .history-box .history-list .history-item {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    background-color: transparent;
+    width: 50%;
+    min-width: 50%;
+    padding: 0 10px 0 10px;
+    font-size: 0.65rem;
+  }
+  body .container .game-container {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 80%;
+            flex: 1 0 80%;
+  }
+  body .container .game-container .board {
+    width: 400px;
+    height: 400px;
+  }
+  body .container .button-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+  }
+  body .container .button-container .button {
+    min-width: 175px;
+    max-width: 300px;
+  }
+}
+/*# sourceMappingURL=index.css.map */

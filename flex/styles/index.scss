@@ -1,0 +1,621 @@
+body {
+  // COLORS AND TEXTS
+  font-family: "Rubik", sans-serif;
+  background-color: #302e2b;
+  color: white;
+  a {
+    text-decoration: none;
+  }
+
+  // SIZE
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+
+  // BORDERS AND MARGINS
+  box-sizing: border-box;
+
+  /*
+   * MAIN CONTAINER CONTAINER STYLES
+   */
+
+  > .container {
+    // FLEX PROPERTIES
+    display: flex;
+
+    // SIZE
+    width: 100%;
+    height: 100%;
+
+    /*
+     * HISTORY CONTAINER STYLES
+     */
+
+    > .history-container {
+      // FLEX PROPERTIES
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+
+      // SIZE
+      width: 100%;
+
+      // BORDERS AND MARGINS
+
+      // COLORS AND TEXTS
+      background-color: #21201d;
+
+      > .history-box {
+        // FLEX PROPERTIES
+        display: flex;
+        flex-direction: column;
+
+        // SIZE
+        width: 100%;
+        height: 60%;
+        min-width: 100px;
+        min-height: 150px;
+        max-width: 250px;
+        max-height: 500px;
+
+        // BORDERS AND MARGINS
+
+        > .history-title {
+          // FLEX PROPERTIES
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          // SIZE
+          height: 20%;
+          min-height: 30px;
+          max-height: 50px;
+
+          // COLORS AND TEXTS
+          font-size: 1.2rem;
+          color: #b3b3b2;
+          text-align: center;
+
+          // BORDERS AND MARGINS
+          border-bottom: 1px solid gray;
+          padding-right: 5px;
+        }
+
+        > .history-list {
+          // FLEX PROPERTIES
+          display: flex;
+          flex-direction: column;
+          overflow-y: scroll;
+
+          > .history-item {
+            // FLEX PROPERTIES
+            display: flex;
+            justify-content: space-evenly;
+
+            // SIZE
+            width: 100%;
+
+            // COLORS AND TEXTS
+            color: #b3b3b2;
+            font-size: 1.2rem;
+          }
+        } // END OF HISTORY LIST
+      } // END OF HISTORY BOX
+    } // END OF HISTORY CONTAINER
+
+    /*
+     * GAME CONTAINER STYLES
+     */
+
+    > .game-container {
+      //FLEX PROPERTIES
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 3;
+
+      > .board {
+        // FLEX PROPERTIES
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: row-reverse;
+
+        // COLORS AND TEXTS
+        background-color: #5784bb;
+
+        // SIZE
+        height: 550px;
+        width: 550px;
+
+        // MARGINS BORDERS ETC.
+        border-radius: 5px;
+
+        > .tile {
+          // MARGIN, BORDERS AND BACKGROUND
+          box-sizing: border-box;
+          border-radius: 5px;
+          background-size: cover;
+          background-repeat: no-repeat;
+
+          // SIZE
+          width: 12.5%;
+          height: 12.5%;
+
+          // TILE ALTERNATING COLORS
+          &:nth-child(n):nth-child(-n + 8):nth-child(odd),
+          &:nth-child(n + 9):nth-child(-n + 16):nth-child(even),
+          &:nth-child(n + 17):nth-child(-n + 24):nth-child(odd),
+          &:nth-child(n + 25):nth-child(-n + 32):nth-child(even),
+          &:nth-child(n + 33):nth-child(-n + 40):nth-child(odd),
+          &:nth-child(n + 41):nth-child(-n + 48):nth-child(even),
+          &:nth-child(n + 49):nth-child(-n + 56):nth-child(odd),
+          &:nth-child(n + 57):nth-child(-n + 64):nth-child(even) {
+            background-color: white;
+          } // END OF TILE ALTERNATING COLORS
+
+          // TILE BACKGROUND IMAGE
+          // PAWNS
+          &:nth-child(n + 9):nth-child(-n + 16) {
+            background-image: url("../../assets/chess-pieces/bP.svg");
+          }
+          &:nth-child(n + 49):nth-child(-n + 56) {
+            background-image: url("../../assets/chess-pieces/wP.svg");
+          }
+          // ROOKS
+          &:nth-child(1),
+          &:nth-child(8) {
+            background-image: url("../../assets/chess-pieces/bR.svg");
+          }
+          &:nth-child(64),
+          &:nth-child(57) {
+            background-image: url("../../assets/chess-pieces/wR.svg");
+          }
+          // KNIGHTS
+          &:nth-child(2),
+          &:nth-child(7) {
+            background-image: url("../../assets/chess-pieces/bN.svg");
+          }
+          &:nth-child(63),
+          &:nth-child(58) {
+            background-image: url("../../assets/chess-pieces/wN.svg");
+          }
+          // BISHOPS
+          &:nth-child(3),
+          &:nth-child(6) {
+            background-image: url("../../assets/chess-pieces/bB.svg");
+          }
+          &:nth-child(62),
+          &:nth-child(59) {
+            background-image: url("../../assets/chess-pieces/wB.svg");
+          }
+          // QUEENS
+          &:nth-child(5) {
+            background-image: url("../../assets/chess-pieces/bQ.svg");
+          }
+          &:nth-child(61) {
+            background-image: url("../../assets/chess-pieces/wQ.svg");
+          }
+          // KINGS
+          &:nth-child(4) {
+            background-image: url("../../assets/chess-pieces/bK.svg");
+          }
+          &:nth-child(60) {
+            background-image: url("../../assets/chess-pieces/wK.svg");
+          }
+        } // END OF TILE
+      } // END OF BOARD
+    } // END OF GAME CONTAINER
+
+    /*
+     * BUTTON CONTAINER STYLES
+     */
+
+    > .button-container {
+      //FLEX PROPERTIES
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      flex: 0.5;
+
+      //BORDERS MARGINS ETC.
+      margin: 0 5px 70px 5px;
+      padding: 0 10px 10px 10px;
+      box-sizing: border-box;
+
+      > .button {
+        // COLORS AND TEXTS ETC.
+        cursor: pointer;
+        text-transform: uppercase;
+        text-align: center;
+        opacity: 0.5;
+
+        // BORDERS MARGINS ETC.
+        box-sizing: border-box;
+        border-radius: 10px;
+        padding: 10px;
+
+        // SIZE
+        width: 100%;
+        min-width: 200px;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      > .left-button {
+        // COLORS AND TEXTS
+        color: white;
+        background-color: #5784bb;
+
+        // BORDERS MARGINS ETC.
+        margin-bottom: 5px;
+      }
+
+      > .right-button {
+        // COLORS AND TEXTS
+        background-color: white;
+        a {
+          color: #5784bb;
+        }
+      }
+    } // END OF BUTTON CONTAINER
+  } // END OF CONTAINER
+
+  /*
+   * SCREEN SIZES
+   */
+  @media (max-width: 1024px) {
+    .container {
+      // FLEX PROPERTIES
+      flex-wrap: wrap;
+      align-items: flex-start;
+      align-content: space-between;
+      gap: 20px;
+
+      .history-container {
+        // FLEX PROPERTIES
+        flex: 1 0 20%;
+        flex-wrap: wrap;
+
+        // SIZE
+        max-height: 100%;
+
+        .history-box {
+          // FLEX PROPERTIES
+          flex-direction: row;
+
+          // SIZE
+          height: 100%;
+          max-width: 70%;
+          min-height: 20px;
+          max-height: 50px;
+          min-width: 500px;
+
+          .history-title {
+            // FLEX PROPERTIES
+            align-self: center;
+
+            // TEXTS
+            font-size: 0.8rem;
+
+            // BORDERS AND MARGINS
+            border-bottom-style: none;
+            border-right: 1px solid gray;
+
+            // SIZE
+            width: 20%;
+          }
+
+          .history-list {
+            // FLEX PROPERTIES
+            flex-direction: row;
+            overflow-x: scroll;
+
+            // SIZE
+            width: 100%;
+            min-width: 60px;
+            max-width: 100%;
+
+            .history-item {
+              // FLEX PROPERTIES
+              justify-content: space-evenly;
+
+              // BACKGROUND AND COLOR
+              background-color: transparent;
+
+              // SIZE
+              width: 50%;
+              min-width: 50%;
+
+              // MARGINS BORDERS ETC.
+              padding: 0 10px 0 10px;
+
+              // COLORS TEXTS ETC>
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+      .game-container {
+        // FLEX PROPERTES
+        flex: 1 0 80%;
+      }
+
+      .button-container {
+        // FLEX PROPERTIES
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 8px;
+        flex: 0 0 100%;
+
+        .button {
+          min-width: 175px;
+          max-width: 300px;
+        }
+      }
+    }
+  } // END 1024 PX
+
+  @media (max-width: 768px) {
+    .container {
+      // FLEX PROPERTIES
+      flex-wrap: wrap;
+      align-items: flex-start;
+      align-content: space-between;
+      gap: 20px;
+
+      .history-container {
+        // FLEX PROPERTIES
+        flex: 1 0 20%;
+        flex-wrap: wrap;
+
+        // SIZE
+        max-height: 100%;
+
+        .history-box {
+          // FLEX PROPERTIES
+          flex-direction: row;
+
+          // SIZE
+          height: 100%;
+          max-width: 70%;
+          min-height: 20px;
+          max-height: 50px;
+          min-width: 500px;
+
+          .history-title {
+            // FLEX PROPERTIES
+            align-self: center;
+
+            // TEXTS
+            font-size: 0.75rem;
+          }
+
+          .history-list {
+            // FLEX PROPERTIES
+            flex-direction: row;
+            overflow-x: scroll;
+
+            // SIZE
+            width: 100%;
+            min-width: 60px;
+            max-width: 100%;
+
+            .history-item {
+              // FLEX PROPERTIES
+              justify-content: space-evenly;
+
+              // BACKGROUND AND COLOR
+              background-color: transparent;
+
+              // SIZE
+              width: 50%;
+              min-width: 50%;
+
+              // MARGINS BORDERS ETC.
+              padding: 0 10px 0 10px;
+            }
+          }
+        }
+      }
+
+      .game-container {
+        // FLEX PROPERTES
+        flex: 1 0 80%;
+
+        .board {
+          width: 500px;
+          height: 500px;
+        }
+      }
+
+      .button-container {
+        // FLEX PROPERTIES
+        display: flex;
+        flex: 0 0 100%;
+
+        .button {
+          min-width: 175px;
+          max-width: 250px;
+        }
+      }
+    }
+  } // END 768 PX
+
+  @media (max-width: 600px) {
+    .container {
+      // FLEX PROPERTIES
+      flex-wrap: wrap;
+      align-items: flex-start;
+      align-content: space-between;
+      gap: 20px;
+
+      .history-container {
+        // FLEX PROPERTIES
+        flex: 1 0 20%;
+        flex-wrap: wrap;
+
+        // SIZE
+        max-height: 100%;
+
+        .history-box {
+          // FLEX PROPERTIES
+          flex-direction: row;
+
+          // SIZE
+          height: 100%;
+          max-width: 70%;
+          min-height: 20px;
+          max-height: 50px;
+          min-width: 450px;
+
+          .history-title {
+            // TEXTS
+            font-size: 0.69rem;
+          }
+
+          .history-list {
+            // FLEX PROPERTIES
+            flex-direction: row;
+            overflow-x: scroll;
+
+            // SIZE
+            width: 100%;
+            min-width: 60px;
+            max-width: 100%;
+
+            .history-item {
+              // FLEX PROPERTIES
+              justify-content: space-evenly;
+
+              // BACKGROUND AND COLOR
+              background-color: transparent;
+
+              // SIZE
+              width: 50%;
+              min-width: 50%;
+
+              // MARGINS BORDERS ETC.
+              padding: 0 10px 0 10px;
+              
+            }
+          }
+        }
+      }
+
+      .game-container {
+        // FLEX PROPERTES
+        flex: 1 0 80%;
+
+        .board {
+          width: 450px;
+          height: 450px;
+        }
+      }
+
+      .button-container {
+        // FLEX PROPERTIES
+        display: flex;
+        flex: 0 0 100%;
+
+        .button {
+          min-width: 175px;
+          max-width: 225px;
+        }
+      }
+    }
+  } // END 600 PX
+
+  @media (max-width: 550px) {
+    .container {
+      // FLEX PROPERTIES
+      flex-wrap: wrap;
+      align-items: flex-start;
+      align-content: space-evenly;
+      gap: 20px;
+
+      .history-container {
+        // FLEX PROPERTIES
+        flex: 1 0 20%;
+        flex-wrap: wrap;
+
+        // SIZE
+        max-height: 100%; 
+
+        .history-box {
+          // FLEX PROPERTIES
+          flex-direction: row;
+
+          // SIZE
+          height: 100%;
+          max-width: 70%;
+          min-height: 20px;
+          max-height: 50px;
+          min-width: 400px;
+
+          .history-title {
+            // TEXTS
+            font-size: 0.55rem;
+          }
+
+          .history-list {
+            // FLEX PROPERTIES
+            flex-direction: row;
+            overflow-x: scroll;
+
+            // SIZE
+            width: 100%;
+            min-width: 60px;
+            max-width: 100%;
+
+            .history-item {
+              // FLEX PROPERTIES
+              justify-content: space-evenly;
+
+              // BACKGROUND AND COLOR
+              background-color: transparent;
+
+              // SIZE
+              width: 50%;
+              min-width: 50%;
+
+              // MARGINS BORDERS ETC.
+              padding: 0 10px 0 10px;
+
+              // COLORS TEXTS ETC.
+              font-size: 0.65rem;
+            }
+          }
+        }
+      }
+
+      .game-container {
+        // FLEX PROPERTES
+        flex: 1 0 80%;
+
+        .board {
+          width: 400px;
+          height: 400px;
+        }
+      }
+
+      .button-container {
+        // FLEX PROPERTIES
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 100%;
+
+        .button {
+          min-width: 175px;
+          max-width: 300px;
+        }
+      }
+    }
+  } // END 600 PX
+} // END OF BODY

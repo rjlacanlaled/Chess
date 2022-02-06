@@ -96,7 +96,26 @@ let piecesHighlighted = [];
 let piecesState = [];
 let whiteGraveyard = [];
 let blackGraveyard = [];
+let moveCount = 1;
+let colLetters = "abcdefgh";
+let gameStarted = false;
+let chessPieces = {
+  wK: "♔",
+  wQ: "♕",
+  wR: "♖",
+  wB: "♗",
+  wN: "♘",
+  wP: "♙",
+  bK: "♚",
+  bQ: "♛",
+  bR: "♜",
+  bB: "♝",
+  bN: "♞",
+  bP: "♟",
+};
 
+let currentMoveNode;
+let moveParentDiv;
 const pieceHighLight = "#f6f686";
 const pattern = new RegExp("[a-zA-Z]{2}(?=.svg)"); // to extract the piece from image url
 
@@ -109,7 +128,8 @@ let currentBoard; // holds the board values
 // EVENT LISTENERS
 
 function onReady(e) {
-  currentBoard = document.querySelectorAll(".box");
+  document.getElementById("start-game-button").addEventListener('click', onGameStart);
+  currentBoard = document.querySelectorAll(".tile");
   let i = 64;
   currentBoard.forEach((box) => {
     box.setAttribute("id", i);
@@ -119,7 +139,20 @@ function onReady(e) {
 }
 
 function onBoxClick(event) {
-  pieceChosen ? validateMove(event) : processMove(event);
+  if (gameStarted) {
+    pieceChosen ? validateMove(event) : processMove(event);
+  }
+}
+
+function onGameStart(event) {
+  if (!gameStarted) {
+    gameStarted = true;
+    event.target.innerHTML = "Quit";
+  } else {
+    document.location.reload();
+    gameStarted=true;
+  }
+
 }
 
 // GAME FLOW
@@ -165,8 +198,11 @@ function validateMove(box) {
 
   if (isValid) {
     switchPlayer();
-    document.getElementById(boxId).style.backgroundImage =
-      getBackgroundImgUrl(pieceBox);
+    const boxTarget = document.getElementById(boxId);
+
+    addMoveToHistory(pieceBox, boxTarget);
+
+    boxTarget.style.backgroundImage = getBackgroundImgUrl(pieceBox);
     pieceBox.style.backgroundImage = "none";
   }
 
@@ -174,8 +210,80 @@ function validateMove(box) {
   revertState();
 }
 
+function addMoveToHistory(fromTile, toTile) {
+  addFromMovementDataToHistory(fromTile);
+  addToMovementDataToHistory(toTile);
+  getHistoryList().scrollLeft = getHistoryList().scrollWidth;
+  getHistoryList().scrollTop = getHistoryList().scrollHeight;
+  moveCount++;
+}
+
+function addFromMovementDataToHistory(fromTile) {
+  const fromTileData = getBoxData(fromTile);
+  const fromCol = col(parseInt(fromTileData.currentPosition), 8);
+  const fromRow = row(parseInt(fromTileData.currentPosition), 8);
+  const fromTileColLetter = colLetters.charAt(fromCol);
+  const fromTilePiece = chessPieces[fromTileData.piece];
+  const pieceText = fromTilePiece + fromTileColLetter + fromRow;
+
+  // CREATE NEW DIV
+  currentMoveNode = document.createElement("div");
+  currentMoveNode.classList.add("history-item");
+
+  // CREATE 2 P TAGS
+
+  // MOVE #
+  const moveCountTag = document.createElement("p");
+  const moveCountText = document.createTextNode(moveCount + ".");
+  moveCountTag.appendChild(moveCountText);
+
+  // ACTUAL MOVE TAG
+  const pieceTag = document.createElement("p");
+  const pieceTagText = document.createTextNode(pieceText);
+  pieceTag.appendChild(pieceTagText);
+
+  //  APPEND TO CURRENT NODE
+  currentMoveNode.appendChild(moveCountTag);
+  currentMoveNode.appendChild(pieceTag);
+
+  getHistoryList().appendChild(currentMoveNode);
+}
+
+function addToMovementDataToHistory(toTile) {
+  const toTileData = getBoxData(toTile);
+  const toCol = col(parseInt(toTile.id), 8);
+  const toRow = row(parseInt(toTile.id), 8);
+  const toTileColLetter = colLetters.charAt(toCol);
+  let toTilePiece;
+  let pieceText;
+
+  if (toTileData !== -1) {
+    toTilePiece = chessPieces[toTileData.piece];
+    pieceText = toTilePiece + toTileColLetter + toRow;
+  } else {
+    pieceText = toTileColLetter + toRow;
+  }
+
+  const toPieceTag = document.createElement("p");
+  const toPieceTagText = document.createTextNode(pieceText);
+  toPieceTag.appendChild(toPieceTagText);
+
+  currentMoveNode.appendChild(toPieceTag);
+}
+
+function freshStyle(stylesheet) {
+  $("#mainStyle").attr("href", stylesheet);
+}
+
 function switchPlayer() {
   currentPlayer = currentPlayer === "w" ? "b" : "w";
+}
+
+function getHistoryList() {
+  if (!moveParentDiv) {
+    moveParentDiv = document.getElementById("history-list-div");
+  }
+  return moveParentDiv;
 }
 
 // GAME FUNCTIONS
@@ -584,35 +692,14 @@ function findAttackMovesForDirection(
   let canAttack = ruleSet.attackSet[moveDirection].includes(type);
 
   if (type === "P") {
-    // if (side === "w") {
-    //   if (
-    //     moveStep === "diagonalBackLeftMove" ||
-    //     moveStep === "diagonalBackRightMove"
-    //   ) {
-    //     canAttack = false;
-    //   }
-    // } else {
-    //   if (moveStep === "diagonalLeftMove" || moveStep === "diagonalRightMove") {
-    //     canAttack = false;
-    //   }
-    // }
-
     if (
-        moveStep === "diagonalBackLeftMove" ||
-        moveStep === "diagonalBackRightMove"
-      ) {
-        canAttack = false;
-      }
-
-
+      moveStep === "diagonalBackLeftMove" ||
+      moveStep === "diagonalBackRightMove"
+    ) {
+      canAttack = false;
+    }
   }
 
-  console.log({
-    canAttack: canAttack,
-    direction: moveDirection,
-    typ: type,
-    side: side,
-  });
   if (canAttack) {
     let attackLimit = ruleSet.attackLimit[moveDirection][type];
     const moveStepCount = parseInt(ruleSet[moveStep]);
