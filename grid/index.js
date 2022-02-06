@@ -114,21 +114,24 @@ let chessPieces = {
   bP: "♟",
 };
 
-let currentMoveNode;
-let moveParentDiv;
-const pieceHighLight = "#f6f686";
+// Game utility
 const pattern = new RegExp("[a-zA-Z]{2}(?=.svg)"); // to extract the piece from image url
 
 // UI HELPERS
-let originalBgColor; // saves the original color
+let currentMoveNode;
+let moveParentDiv;
 let currentBoard; // holds the board values
+const pieceHighLight = "#f6f686";
 
 // END VARIABLES AND CONSTANTS
 
 // EVENT LISTENERS
 
+// STARTING POINT OF THE SCRIPT
 function onReady(e) {
-  document.getElementById("start-game-button").addEventListener('click', onGameStart);
+  document
+    .getElementById("start-game-button")
+    .addEventListener("click", onGameStart);
   currentBoard = document.querySelectorAll(".tile");
   let i = 64;
   currentBoard.forEach((box) => {
@@ -138,21 +141,22 @@ function onReady(e) {
   });
 }
 
+// EVENT HANDLER FOR TILE CLICKS
 function onBoxClick(event) {
   if (gameStarted) {
     pieceChosen ? validateMove(event) : processMove(event);
   }
 }
 
+// EVENT HANDLER FOR START BUTTON CLICK
 function onGameStart(event) {
   if (!gameStarted) {
     gameStarted = true;
     event.target.innerHTML = "Quit";
   } else {
     document.location.reload();
-    gameStarted=true;
+    gameStarted = true;
   }
-
 }
 
 // GAME FLOW
@@ -180,6 +184,10 @@ function processMove(box) {
     console.log(ex);
   }
 }
+
+/*
+ * VALIDATES A USER'S MOVE
+ */
 
 function validateMove(box) {
   const boxId = box.target.id;
@@ -210,6 +218,10 @@ function validateMove(box) {
   revertState();
 }
 
+/*
+ * UI HELPER FUNCTION TO ADD ANOTHER ELEMENT TO THE HISTORY LIST DIV
+ */
+
 function addMoveToHistory(fromTile, toTile) {
   addFromMovementDataToHistory(fromTile);
   addToMovementDataToHistory(toTile);
@@ -217,6 +229,10 @@ function addMoveToHistory(fromTile, toTile) {
   getHistoryList().scrollTop = getHistoryList().scrollHeight;
   moveCount++;
 }
+
+/*
+ * Sub method of addMoveToHistory - gets the origin tile data
+ */
 
 function addFromMovementDataToHistory(fromTile) {
   const fromTileData = getBoxData(fromTile);
@@ -249,6 +265,20 @@ function addFromMovementDataToHistory(fromTile) {
   getHistoryList().appendChild(currentMoveNode);
 }
 
+/*
+ * Returns the movement history list div via lazy intialization
+ */
+function getHistoryList() {
+  if (!moveParentDiv) {
+    moveParentDiv = document.getElementById("history-list-div");
+  }
+  return moveParentDiv;
+}
+
+/*
+ * SUB METHOD OF addMoveToHistory - gets the target tile data
+ */
+
 function addToMovementDataToHistory(toTile) {
   const toTileData = getBoxData(toTile);
   const toCol = col(parseInt(toTile.id), 8);
@@ -271,22 +301,15 @@ function addToMovementDataToHistory(toTile) {
   currentMoveNode.appendChild(toPieceTag);
 }
 
-function freshStyle(stylesheet) {
-  $("#mainStyle").attr("href", stylesheet);
-}
+// GAME FUNCTIONS
 
+
+/*
+ * Switches players turn
+ */
 function switchPlayer() {
   currentPlayer = currentPlayer === "w" ? "b" : "w";
 }
-
-function getHistoryList() {
-  if (!moveParentDiv) {
-    moveParentDiv = document.getElementById("history-list-div");
-  }
-  return moveParentDiv;
-}
-
-// GAME FUNCTIONS
 
 /*
  * GET ALL AVAILABLE MOVES TO BE USED FOR HIGHLIGHTING THE TILE
@@ -305,28 +328,36 @@ function findMoves(piece, currentLocation) {
     type,
     loc,
     "forward",
-    "forwardMove"
+    "forwardMove",
+    1,
+    0
   );
   const backwardMoves = findMovesForDirection(
     side,
     type,
     loc,
     "backward",
-    "backwardMove"
+    "backwardMove",
+    1,
+    0
   );
   const diagonalLeftMoves = findMovesForDirection(
     side,
     type,
     loc,
     "diagonal",
-    "diagonalLeftMove"
+    "diagonalLeftMove",
+    1,
+    1
   );
   const diagonalRightMoves = findMovesForDirection(
     side,
     type,
     loc,
     "diagonal",
-    "diagonalRightMove"
+    "diagonalRightMove",
+    1,
+    1
   );
 
   const diagonalBackLeftMoves = findMovesForDirection(
@@ -334,7 +365,9 @@ function findMoves(piece, currentLocation) {
     type,
     loc,
     "diagonal",
-    "diagonalBackLeftMove"
+    "diagonalBackLeftMove",
+    1,
+    1
   );
 
   const diagonalBackRightMoves = findMovesForDirection(
@@ -342,7 +375,9 @@ function findMoves(piece, currentLocation) {
     type,
     loc,
     "diagonal",
-    "diagonalBackRightMove"
+    "diagonalBackRightMove",
+    1,
+    1
   );
 
   const sidewardRightMoves = findMovesForDirection(
@@ -350,14 +385,18 @@ function findMoves(piece, currentLocation) {
     type,
     loc,
     "sideward",
-    "sidewardRightMove"
+    "sidewardRightMove",
+    0,
+    1
   );
   const sidewardLeftMoves = findMovesForDirection(
     side,
     type,
     loc,
     "sideward",
-    "sidewardLeftMove"
+    "sidewardLeftMove",
+    0,
+    1
   );
 
   const jumpLeftBackFarMoves = findMovesForDirection(
@@ -440,28 +479,36 @@ function findMoves(piece, currentLocation) {
     type,
     loc,
     "forward",
-    "forwardMove"
+    "forwardMove",
+    1,
+    0
   );
   const backwardMovesAttack = findAttackMovesForDirection(
     side,
     type,
     loc,
     "backward",
-    "backwardMove"
+    "backwardMove",
+    1,
+    0
   );
   const diagonalLeftMovesAttack = findAttackMovesForDirection(
     side,
     type,
     loc,
     "diagonal",
-    "diagonalLeftMove"
+    "diagonalLeftMove",
+    1,
+    1
   );
   const diagonalRightMovesAttack = findAttackMovesForDirection(
     side,
     type,
     loc,
     "diagonal",
-    "diagonalRightMove"
+    "diagonalRightMove",
+    1,
+    1
   );
 
   const diagonalBackLeftMovesAttack = findAttackMovesForDirection(
@@ -469,7 +516,9 @@ function findMoves(piece, currentLocation) {
     type,
     loc,
     "diagonal",
-    "diagonalBackLeftMove"
+    "diagonalBackLeftMove",
+    1,
+    1
   );
 
   const diagonalBackRightMovesAttack = findAttackMovesForDirection(
@@ -477,7 +526,9 @@ function findMoves(piece, currentLocation) {
     type,
     loc,
     "diagonal",
-    "diagonalBackRightMove"
+    "diagonalBackRightMove",
+    1,
+    1
   );
 
   const sidewardRightMovesAttack = findAttackMovesForDirection(
@@ -485,14 +536,18 @@ function findMoves(piece, currentLocation) {
     type,
     loc,
     "sideward",
-    "sidewardRightMove"
+    "sidewardRightMove",
+    0,
+    1
   );
   const sidewardLeftMovesAttack = findAttackMovesForDirection(
     side,
     type,
     loc,
     "sideward",
-    "sidewardLeftMove"
+    "sidewardLeftMove",
+    0,
+    1
   );
 
   const jumpLeftBackFarMovesAttack = findAttackMovesForDirection(
@@ -604,6 +659,10 @@ function findMoves(piece, currentLocation) {
   return moves;
 }
 
+/*
+ * Finds all the availble tiles to move to for a specific chess piece
+ */
+
 function findMovesForDirection(
   side,
   type,
@@ -679,6 +738,10 @@ function findMovesForDirection(
   return boxes;
 }
 
+/*
+ * Finds all available tiles to attack for a specific chess piece
+ */
+
 function findAttackMovesForDirection(
   side,
   type,
@@ -751,7 +814,11 @@ function findAttackMovesForDirection(
   return boxes;
 }
 
-// HELPERS
+// Other Game and UI Helpers
+
+/*
+ * Highlights the chosen piece tile together with all the available move tiles
+ */
 
 function highlightChosenPieces(box, availableMoves) {
   piecesState.push({
@@ -774,15 +841,16 @@ function highlightChosenPieces(box, availableMoves) {
 
   piecesHighlighted.forEach((piece) => {
     piece.style.backgroundColor = pieceHighLight;
-    // piece.style.borderColor = '#017BFE';
-    // piece.style.borderWidth = 'thin';
-    // piece.style.borderStyle = 'solid';
     piece.style.borderRadius = "5px";
     if (piece !== box.target) {
       piece.style.opacity = 0.6;
     }
   });
 }
+
+/*
+ * Reverts highlighted tiles to previous state
+ */
 
 function revertState() {
   piecesState.forEach((piece) => {
@@ -797,6 +865,10 @@ function revertState() {
   piecesHighlighted = [];
 }
 
+/*
+ * Returns the background image url of an element
+ */
+
 function getBackgroundImgUrl(element) {
   try {
     const imgUrl = window.getComputedStyle(element).backgroundImage;
@@ -806,10 +878,18 @@ function getBackgroundImgUrl(element) {
   }
 }
 
+/*
+ * Game helper to extract chess piece from a URL
+ */
+
 function getPieceFromURL(url) {
   const result = pattern.exec(url)[0];
   return result;
 }
+
+/*
+ * Game helper to extract chess piece type and current location on the board 
+ */
 
 function getBoxData(box) {
   const imgUrl = getBackgroundImgUrl(box);
@@ -827,6 +907,10 @@ function getBoxData(box) {
 
   return -1;
 }
+
+/*
+ * Finds the next avaialble tile depending on the currentlocation and the movement direction
+ */
 
 function getNextTileMove(moveStep, moveStepCount, currentLocation, side) {
   let nextLoc;
@@ -877,7 +961,11 @@ function getNextTileMove(moveStep, moveStepCount, currentLocation, side) {
   }
 }
 
-// DIRECTION & GRID UTILITIES
+// DIRECTION UTILITIES
+
+/*
+ * Checks if the next tile is a valid movement path for a specific direction
+ */
 
 function isValidDirection(
   originIndex,
@@ -904,30 +992,32 @@ function isValidDirection(
   const rowDifference = Math.abs(originCoordinates.row - targetCoordinates.row);
   const colDifference = Math.abs(originCoordinates.col - targetCoordinates.col);
 
-  switch (direction) {
-    case "forward":
-    case "backward":
-      return originCoordinates.col === targetCoordinates.col;
-    case "sideward":
-      return originCoordinates.row === targetCoordinates.row;
-    case "diagonal":
-      return rowDifference === 1 && colDifference === 1;
-    case "jump":
-      return (
-        rowDifference === customRowDifference &&
-        colDifference === customColumnDifference
-      );
-  }
+  return (
+    rowDifference === customRowDifference &&
+    colDifference === customColumnDifference
+  );
 }
+
+/*
+ * Grid function to return row number from the grid
+ */
 
 function row(index, rowCount) {
   return Math.ceil(index / rowCount);
 }
 
+/*
+ * Grid function to return column number from the grid
+ */
+
 function col(index, maxCol) {
   const col = index % maxCol;
   return col === 0 ? maxCol : col;
 }
+
+/*
+ * Grid function to return row and column numbers from the grid
+ */
 
 function getCoordinates(index, rowCount, colCount) {
   return { row: row(index, rowCount), col: col(index, colCount) };
