@@ -1,4 +1,4 @@
 # Chess
 [Avion] Lichess-inspired chess game
 
-# [Chess.com](chess.com)
+# [![Chess.com]](chess.com)
