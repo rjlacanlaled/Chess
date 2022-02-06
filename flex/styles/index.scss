@@ -158,51 +158,51 @@ body {
           // TILE BACKGROUND IMAGE
           // PAWNS
           &:nth-child(n + 9):nth-child(-n + 16) {
-            background-image: url("../../assets/chess-pieces/bP.svg");
+            background-image: url("../chess-pieces/bP.svg");
           }
           &:nth-child(n + 49):nth-child(-n + 56) {
-            background-image: url("../../assets/chess-pieces/wP.svg");
+            background-image: url("../chess-pieces/wP.svg");
           }
           // ROOKS
           &:nth-child(1),
           &:nth-child(8) {
-            background-image: url("../../assets/chess-pieces/bR.svg");
+            background-image: url("../chess-pieces/bR.svg");
           }
           &:nth-child(64),
           &:nth-child(57) {
-            background-image: url("../../assets/chess-pieces/wR.svg");
+            background-image: url("../chess-pieces/wR.svg");
           }
           // KNIGHTS
           &:nth-child(2),
           &:nth-child(7) {
-            background-image: url("../../assets/chess-pieces/bN.svg");
+            background-image: url("../chess-pieces/bN.svg");
           }
           &:nth-child(63),
           &:nth-child(58) {
-            background-image: url("../../assets/chess-pieces/wN.svg");
+            background-image: url("../chess-pieces/wN.svg");
           }
           // BISHOPS
           &:nth-child(3),
           &:nth-child(6) {
-            background-image: url("../../assets/chess-pieces/bB.svg");
+            background-image: url("../chess-pieces/bB.svg");
           }
           &:nth-child(62),
           &:nth-child(59) {
-            background-image: url("../../assets/chess-pieces/wB.svg");
+            background-image: url("../chess-pieces/wB.svg");
           }
           // QUEENS
           &:nth-child(5) {
-            background-image: url("../../assets/chess-pieces/bQ.svg");
+            background-image: url("../chess-pieces/bQ.svg");
           }
           &:nth-child(61) {
-            background-image: url("../../assets/chess-pieces/wQ.svg");
+            background-image: url("../chess-pieces/wQ.svg");
           }
           // KINGS
           &:nth-child(4) {
-            background-image: url("../../assets/chess-pieces/bK.svg");
+            background-image: url("../chess-pieces/bK.svg");
           }
           &:nth-child(60) {
-            background-image: url("../../assets/chess-pieces/wK.svg");
+            background-image: url("../chess-pieces/wK.svg");
           }
         } // END OF TILE
       } // END OF BOARD

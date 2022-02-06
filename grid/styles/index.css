@@ -154,51 +154,51 @@ body > .container > .game-container > .board > .tile:nth-child(n):nth-child(-n +
 }
 
 body > .container > .game-container > .board > .tile:nth-child(n + 9):nth-child(-n + 16) {
-  background-image: url("../../assets/chess-pieces/bP.svg");
+  background-image: url("../chess-pieces/bP.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(n + 49):nth-child(-n + 56) {
-  background-image: url("../../assets/chess-pieces/wP.svg");
+  background-image: url("../chess-pieces/wP.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(1), body > .container > .game-container > .board > .tile:nth-child(8) {
-  background-image: url("../../assets/chess-pieces/bR.svg");
+  background-image: url("../chess-pieces/bR.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(64), body > .container > .game-container > .board > .tile:nth-child(57) {
-  background-image: url("../../assets/chess-pieces/wR.svg");
+  background-image: url("../chess-pieces/wR.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(2), body > .container > .game-container > .board > .tile:nth-child(7) {
-  background-image: url("../../assets/chess-pieces/bN.svg");
+  background-image: url("../chess-pieces/bN.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(63), body > .container > .game-container > .board > .tile:nth-child(58) {
-  background-image: url("../../assets/chess-pieces/wN.svg");
+  background-image: url("../chess-pieces/wN.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(3), body > .container > .game-container > .board > .tile:nth-child(6) {
-  background-image: url("../../assets/chess-pieces/bB.svg");
+  background-image: url("../chess-pieces/bB.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(62), body > .container > .game-container > .board > .tile:nth-child(59) {
-  background-image: url("../../assets/chess-pieces/wB.svg");
+  background-image: url("../chess-pieces/wB.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(5) {
-  background-image: url("../../assets/chess-pieces/bQ.svg");
+  background-image: url("../chess-pieces/bQ.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(61) {
-  background-image: url("../../assets/chess-pieces/wQ.svg");
+  background-image: url("../chess-pieces/wQ.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(4) {
-  background-image: url("../../assets/chess-pieces/bK.svg");
+  background-image: url("../chess-pieces/bK.svg");
 }
 
 body > .container > .game-container > .board > .tile:nth-child(60) {
-  background-image: url("../../assets/chess-pieces/wK.svg");
+  background-image: url("../chess-pieces/wK.svg");
 }
 
 body > .container > .button-container {
