@@ -84,9 +84,9 @@ body > .container > .history-container > .history-box > .history-title {
   min-height: 30px;
   max-height: 50px;
   font-size: 1.2rem;
-  color: #b3b3b2;
+  color: #779556;
   text-align: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #779556;
   padding-right: 5px;
 }
 
@@ -135,7 +135,7 @@ body > .container > .game-container > .board {
       grid-template-columns: repeat(8, 1fr);
   -ms-grid-rows: (1fr)[8];
       grid-template-rows: repeat(8, 1fr);
-  background-color: #5784bb;
+  background-color: #779556;
   height: 550px;
   width: 550px;
   border-radius: 5px;
@@ -243,7 +243,7 @@ body > .container > .button-container > .button:hover {
 
 body > .container > .button-container > .left-button {
   color: white;
-  background-color: #5784bb;
+  background-color: #779556;
   margin-bottom: 5px;
 }
 
@@ -252,7 +252,7 @@ body > .container > .button-container > .right-button {
 }
 
 body > .container > .button-container > .right-button a {
-  color: #5784bb;
+  color: #779556;
 }
 
 @media (max-width: 1024px) {
@@ -501,8 +501,8 @@ body > .container > .button-container > .right-button a {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    -ms-flex-line-pack: space-evenly;
-        align-content: space-evenly;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
     gap: 20px;
   }
   body .container .history-container {
