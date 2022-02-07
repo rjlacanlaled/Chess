@@ -75,11 +75,11 @@ body {
 
           // COLORS AND TEXTS
           font-size: 1.2rem;
-          color: #b3b3b2;
+          color: #779556;
           text-align: center;
 
           // BORDERS AND MARGINS
-          border-bottom: 1px solid gray;
+          border-bottom: 1px solid #779556;
           padding-right: 5px;
         }
 
@@ -123,7 +123,7 @@ body {
         grid-template-rows: repeat(8, 1fr);
 
         // COLORS AND TEXTS
-        background-color: #5784bb;
+        background-color: #779556;
 
         // SIZE
         height: 550px;
@@ -245,7 +245,7 @@ body {
       > .left-button {
         // COLORS AND TEXTS
         color: white;
-        background-color: #5784bb;
+        background-color: #779556;
 
         // BORDERS MARGINS ETC.
         margin-bottom: 5px;
@@ -255,7 +255,7 @@ body {
         // COLORS AND TEXTS
         background-color: white;
         a {
-          color: #5784bb;
+          color: #779556;
         }
       }
     } // END OF BUTTON CONTAINER
@@ -533,7 +533,7 @@ body {
       // FLEX PROPERTIES
       flex-wrap: wrap;
       align-items: flex-start;
-      align-content: space-evenly;
+      align-content: space-between;
       gap: 20px;
 
       .history-container {
