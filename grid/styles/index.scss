@@ -187,17 +187,17 @@ body {
             background-image: url("../chess-pieces/wB.svg");
           }
           // QUEENS
-          &:nth-child(5) {
+          &:nth-child(4) {
             background-image: url("../chess-pieces/bQ.svg");
           }
-          &:nth-child(61) {
+          &:nth-child(60) {
             background-image: url("../chess-pieces/wQ.svg");
           }
           // KINGS
-          &:nth-child(4) {
+          &:nth-child(5) {
             background-image: url("../chess-pieces/bK.svg");
           }
-          &:nth-child(60) {
+          &:nth-child(61) {
             background-image: url("../chess-pieces/wK.svg");
           }
         } // END OF TILE
