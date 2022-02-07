@@ -538,9 +538,9 @@ body > .container > .button-container > .right-button a {
     max-width: 100%;
   }
   body .container .history-container .history-box .history-list .history-item {
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     background-color: transparent;
     width: 50%;
     min-width: 50%;
